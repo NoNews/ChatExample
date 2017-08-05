@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/TouchEffect"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/chat_room_height"
+    android:gravity="center_vertical"
+    android:paddingStart="@dimen/activity_small_margin">
+
+    <ru.alexbykov.chat.custom.views.CustomCircleImageView
+        android:id="@+id/civPhoto"
+        android:layout_width="@dimen/normal_image"
+        android:layout_height="@dimen/normal_image"
+        android:layout_centerVertical="true"/>
+
+
+    <RelativeLayout
+        style="@style/BoilerPlate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_toEndOf="@id/civPhoto"
+    >
+
+        <LinearLayout
+            style="@style/BoilerPlate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvName"
+                style="@style/StandartBlackHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            />
+
+            <TextView
+                android:id="@+id/tvLastMessage"
+                style="@style/StandartText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_very_small_margin"
+            />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            style="@style/BoilerPlate"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/activity_middle_margin"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/BoilerPlate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/ivRead"
+                    android:layout_width="@dimen/small_image"
+                    android:layout_height="@dimen/small_image"
+                    android:layout_marginEnd="@dimen/activity_small_margin"
+                    android:background="@drawable/read_message_selector"
+                />
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/activity_small_margin"
+                />
+
+            </LinearLayout>
+
+            <ru.alexbykov.chat.custom.views.BadgeView
+                android:id="@+id/badgeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/activity_small_margin"/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            style="@style/BoilerPlate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+        >
+            <include layout="@layout/item_separate_line"/>
+        </FrameLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
+
