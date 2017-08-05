@@ -19,11 +19,11 @@ import ru.alexbykov.chat.interfaces.utils_view.NetworkView;
 public abstract class BaseNetworkActivity extends BaseActivity implements NetworkView {
 
 
-    private ViewGroup ltData;
-    private ProgressBar progressBar;
-    private Button btnRepeat;
-    private ViewGroup ltError;
-    private TextView tvError;
+    protected ViewGroup ltData;
+    protected ProgressBar progressBar;
+    protected Button btnRepeat;
+    protected ViewGroup ltError;
+    protected TextView tvError;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +43,9 @@ public abstract class BaseNetworkActivity extends BaseActivity implements Networ
     }
 
     @Override
-    public void showError(boolean show, String text) {
+    public void showNetworkError(boolean show) {
         if (show) {
             showView(ltError);
-            tvError.setText(text);
         } else hideView(ltError);
     }
 }

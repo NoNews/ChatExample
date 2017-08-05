@@ -32,6 +32,7 @@ public class ChatRoomsActivity extends BaseNetworkActivity implements ChatRoomsV
         return Injector.getPresenterComponent().getMainActivityPresenter();
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(LAYOUT);
@@ -47,7 +48,7 @@ public class ChatRoomsActivity extends BaseNetworkActivity implements ChatRoomsV
 
     @Override
     public void setupUX() {
-
+        btnRepeat.setOnClickListener(v->chatRoomsPresenter.repeat());
     }
 
     @Override
@@ -70,6 +71,10 @@ public class ChatRoomsActivity extends BaseNetworkActivity implements ChatRoomsV
     private void bindViews() {
         rvChatRooms = bindView(R.id.rvChatRooms);
         toolbar = bindView(R.id.toolbar);
+        progressBar = bindView(R.id.progressBar);
+        ltData = bindView(R.id.ltData);
+        ltError = bindView(R.id.ltError);
+        btnRepeat = bindView(R.id.btnRepeat);
     }
 
 }

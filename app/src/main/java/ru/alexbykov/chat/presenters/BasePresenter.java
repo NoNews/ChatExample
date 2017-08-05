@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.arellomobile.mvp.MvpPresenter;
 import com.arellomobile.mvp.MvpView;
+import com.arellomobile.mvp.Pair;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -50,5 +51,8 @@ public class BasePresenter<View extends MvpView> extends MvpPresenter<View> {
     public void onDestroy() {
         super.onDestroy();
         compositeDisposable.clear();
+        if (roomsHelper!=null){
+            roomsHelper.unsubscribe();
+        }
     }
 }

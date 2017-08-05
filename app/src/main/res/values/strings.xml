@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">AndroidTemplate</string>
-    <string name="repeat_request">Повторить запрос</string>
+    <string name="app_name">ChatExample</string>
+    <string name="repeat_request">Повторить</string>
     <string name="something_went_wrong">Что-то пошло не так :\'(</string>
     <string name="chat_rooms_activity">Контакты</string>
+    <string name="error_network">Проверьте Ваше интернет-соединение</string>
 </resources>

@@ -66,11 +66,13 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements Navig
     @Override
     public final void startActivity(Class<? extends BaseActivity> activityClass) {
         Navigator.startActivity(this, activityClass, false);
+        overridePendingTransition(R.anim.move_right_in_activity, R.anim.move_left_out_activity);
     }
 
     @Override
     public final void startActivityForResult(Class<? extends BaseActivity> activityClass, int requestCode) {
         Navigator.startActivityForResult(this, activityClass, requestCode);
+        overridePendingTransition(R.anim.move_right_in_activity, R.anim.move_left_out_activity);
     }
 
     @Override
@@ -101,5 +103,12 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements Navig
     protected final int bindDimen(@DimenRes int id) {
         return (int) getResources().getDimension(id);
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(R.anim.move_left_in_activity, R.anim.move_right_out_activity);
+    }
+
 
 }

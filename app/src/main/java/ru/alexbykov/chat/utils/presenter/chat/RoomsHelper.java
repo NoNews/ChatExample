@@ -48,4 +48,8 @@ public class RoomsHelper implements UpdateListener {
     public void addChatRooms(List<RoomDTO> rooms) {
         this.rooms = rooms;
     }
+
+    public void unsubscribe() {
+        rxUpdater.unsubscribe();
+    }
 }

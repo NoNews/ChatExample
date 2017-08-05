@@ -13,5 +13,5 @@ import ru.alexbykov.chat.interfaces.views.BaseView;
 public interface NetworkView extends BaseView {
     void showProgress(boolean show);
     void showData(boolean show);
-    void showError(boolean show, String text);
+    void showNetworkError(boolean show);
 }

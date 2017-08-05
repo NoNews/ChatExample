@@ -37,4 +37,10 @@ public class SplashActivity extends BaseActivity implements SplashView {
     public void setupUX() {
         //do nothing, it's splash
     }
+
+    @Override
+    public void showRoomsActivity() {
+        startActivity(ChatRoomsActivity.class);
+        finish();
+    }
 }

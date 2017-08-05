@@ -72,4 +72,7 @@ public class RxUpdater {
         Log.i(TAG, "onUpdate: messageeeeeeeeeee" + ++count);
     }
 
+    public void unsubscribe() {
+        roomUpdate.dispose();
+    }
 }
