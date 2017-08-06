@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 
+import ru.alexbykov.chat.activities.base.BaseActivity;
 import ru.alexbykov.chat.interfaces.views.SplashView;
 import ru.alexbykov.chat.presenters.SplashPresenter;
 import ru.alexbykov.chat.utils.Injector;

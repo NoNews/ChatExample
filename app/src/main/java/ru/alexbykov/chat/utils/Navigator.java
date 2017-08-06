@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 
 import ru.alexbykov.chat.R;
-import ru.alexbykov.chat.activities.BaseActivity;
+import ru.alexbykov.chat.activities.base.BaseActivity;
 
 /**
  * Date: 04.06.2017

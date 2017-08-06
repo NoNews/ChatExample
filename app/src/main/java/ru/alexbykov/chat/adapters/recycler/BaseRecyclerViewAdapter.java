@@ -76,8 +76,8 @@ abstract public class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         this.onItemClickListener = onItemClickListener;
     }
 
-    public interface OnItemClickListener {
-        void onClick(Object object);
+    public interface OnItemClickListener<T> {
+        void onClick(T t);
     }
 
 

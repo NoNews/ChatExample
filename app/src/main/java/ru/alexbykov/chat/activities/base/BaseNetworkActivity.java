@@ -1,4 +1,4 @@
-package ru.alexbykov.chat.activities;
+package ru.alexbykov.chat.activities.base;
 
 import android.os.Bundle;
 import android.view.ViewGroup;

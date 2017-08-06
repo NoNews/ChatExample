@@ -7,15 +7,17 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.disposables.Disposable;
+import ru.alexbykov.chat.activities.ChatActivity;
+import ru.alexbykov.chat.adapters.recycler.BaseRecyclerViewAdapter;
 import ru.alexbykov.chat.api.ApiResponse;
 import ru.alexbykov.chat.api.RestApi;
 import ru.alexbykov.chat.api.models.chats.ChatRoomDTO;
 import ru.alexbykov.chat.interfaces.views.ChatRoomsView;
-import ru.alexbykov.chat.utils.presenter.chat.RoomsHelper;
 import ru.alexbykov.chat.utils.RxUtils;
+import ru.alexbykov.chat.utils.presenter.chat.RoomsHelper;
 
 @InjectViewState
-public class ChatRoomsPresenter extends BasePresenter<ChatRoomsView> {
+public class ChatRoomsPresenter extends BasePresenter<ChatRoomsView> implements BaseRecyclerViewAdapter.OnItemClickListener<Integer> {
 
     @Inject
     ChatRoomsPresenter(RestApi restApi, RoomsHelper roomsHelper) {
@@ -58,5 +60,10 @@ public class ChatRoomsPresenter extends BasePresenter<ChatRoomsView> {
 
     public void repeat() {
         getChatRoomsRequest();
+    }
+
+    @Override
+    public void onClick(Integer person) {
+        getViewState().startActivity(ChatActivity.class);
     }
 }

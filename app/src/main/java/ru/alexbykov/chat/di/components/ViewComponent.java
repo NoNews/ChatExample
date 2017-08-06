@@ -4,7 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import ru.alexbykov.chat.App;
-import ru.alexbykov.chat.activities.BaseActivity;
+import ru.alexbykov.chat.activities.base.BaseActivity;
 import ru.alexbykov.chat.di.modules.ViewModule;
 
 /**
@@ -22,4 +22,5 @@ import ru.alexbykov.chat.di.modules.ViewModule;
 public interface ViewComponent {
     void inject(App app);
     void inject(BaseActivity baseActivity);
+
 }

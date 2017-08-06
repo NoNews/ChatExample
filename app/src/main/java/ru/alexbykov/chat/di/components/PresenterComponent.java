@@ -6,6 +6,7 @@ import dagger.Component;
 import ru.alexbykov.chat.App;
 import ru.alexbykov.chat.di.modules.RestModule;
 import ru.alexbykov.chat.di.modules.UtilsModule;
+import ru.alexbykov.chat.presenters.ChatPresenter;
 import ru.alexbykov.chat.presenters.ChatRoomsPresenter;
 import ru.alexbykov.chat.presenters.SplashPresenter;
 
@@ -21,6 +22,6 @@ import ru.alexbykov.chat.presenters.SplashPresenter;
 public interface PresenterComponent {
     //@formatter:off
     void inject(App app);
-    ChatRoomsPresenter getMainActivityPresenter();
+    ChatRoomsPresenter getChatRoomPresenter();
     SplashPresenter getSplashPresenter();
-}
+    ChatPresenter getChatPresenter();}

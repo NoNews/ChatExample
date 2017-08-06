@@ -1,4 +1,4 @@
-package ru.alexbykov.chat.activities;
+package ru.alexbykov.chat.activities.base;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -107,7 +107,7 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements Navig
     @Override
     public void onBackPressed() {
         finish();
-        overridePendingTransition(R.anim.move_left_in_activity, R.anim.move_right_out_activity);
+        overridePendingTransition(R.anim.no_animation, R.anim.no_animation);
     }
 
 

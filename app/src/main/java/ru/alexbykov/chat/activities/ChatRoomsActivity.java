@@ -11,6 +11,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import java.util.List;
 
 import ru.alexbykov.chat.R;
+import ru.alexbykov.chat.activities.base.BaseNetworkActivity;
 import ru.alexbykov.chat.adapters.recycler.ChatRoomsAdapter;
 import ru.alexbykov.chat.api.models.chats.ChatRoomDTO;
 import ru.alexbykov.chat.interfaces.views.ChatRoomsView;
@@ -29,7 +30,7 @@ public class ChatRoomsActivity extends BaseNetworkActivity implements ChatRoomsV
 
     @ProvidePresenter
     ChatRoomsPresenter provideMainActivityPresenter() {
-        return Injector.getPresenterComponent().getMainActivityPresenter();
+        return Injector.getPresenterComponent().getChatRoomPresenter();
     }
 
 
@@ -49,6 +50,7 @@ public class ChatRoomsActivity extends BaseNetworkActivity implements ChatRoomsV
     @Override
     public void setupUX() {
         btnRepeat.setOnClickListener(v->chatRoomsPresenter.repeat());
+        chatRoomsAdapter.setOnItemClickListener(chatRoomsPresenter);
     }
 
     @Override

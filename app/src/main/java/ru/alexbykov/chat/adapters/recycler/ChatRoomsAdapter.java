@@ -33,10 +33,10 @@ public class ChatRoomsAdapter extends BaseRecyclerViewAdapter<ChatRoomDTO, ChatR
         holder.tvLastMessage.setText(room.getLastMessageText());
         holder.tvDate.setText(room.getLastMessageDate());
         holder.badgeView.setCount(room.getUnreadMessagesCount());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
+        holder.itemView.setOnClickListener(v -> {
+            if (onItemClickListener != null) {
+                onItemClickListener.onClick(room.getId());
             }
         });
 
@@ -56,8 +56,6 @@ public class ChatRoomsAdapter extends BaseRecyclerViewAdapter<ChatRoomDTO, ChatR
                 break;
             }
         }
-
-
     }
 
 

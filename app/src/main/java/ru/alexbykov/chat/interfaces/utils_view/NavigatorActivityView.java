@@ -3,7 +3,7 @@ package ru.alexbykov.chat.interfaces.utils_view;
 import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
-import ru.alexbykov.chat.activities.BaseActivity;
+import ru.alexbykov.chat.activities.base.BaseActivity;
 import ru.alexbykov.chat.interfaces.views.BaseView;
 
 /**
