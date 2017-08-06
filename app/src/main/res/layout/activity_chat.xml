@@ -5,7 +5,54 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <include layout="@layout/toolbar"/>
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+
+        <LinearLayout
+            style="@style/BoilerPlate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        >
+
+            <ru.alexbykov.chat.custom.views.CustomCircleImageView
+                android:id="@+id/civPhoto"
+                android:layout_width="@dimen/middle_image"
+                android:layout_height="@dimen/middle_image"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/activity_small_margin"
+            />
+
+            <LinearLayout
+                style="@style/BoilerPlate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvToolbarTitle"
+                    style="@style/WhiteLargeBoldText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="вавававававав"/>
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    style="@style/WhiteStandartText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="вававававав"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.Toolbar>
 
 
 </LinearLayout>

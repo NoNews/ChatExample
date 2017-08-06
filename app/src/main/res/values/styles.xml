@@ -39,6 +39,21 @@
         <item name="android:textSize">@dimen/standart_text_size</item>
     </style>
 
+    <style name="LargeText">
+        <item name="android:textSize">@dimen/large_text_size</item>
+    </style>
+
+
+    <style name="WhiteLargeBoldText" parent="LargeText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="WhiteStandartText" parent="StandartText">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
 
     <style name="StandartButton" parent="StandartText">
         <item name="android:textColor">@color/white</item>

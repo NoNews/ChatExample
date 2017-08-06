@@ -20,6 +20,8 @@ public class ChatPresenter extends BasePresenter<ChatView> {
 
     private void setupToolbar() {
         getViewState().setToolbarTitle(chatRepository.getPerson().getFullName());
+        getViewState().setToolbarPhoto(chatRepository.getPerson().getPhotoUrl());
+        getViewState().setStatus("Онлайн");
     }
 
 }

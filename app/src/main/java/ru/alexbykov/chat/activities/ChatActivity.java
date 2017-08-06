@@ -1,12 +1,14 @@
 package ru.alexbykov.chat.activities;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 
 import ru.alexbykov.chat.R;
 import ru.alexbykov.chat.activities.base.BaseSingleActivity;
+import ru.alexbykov.chat.custom.views.CustomCircleImageView;
 import ru.alexbykov.chat.interfaces.views.ChatView;
 import ru.alexbykov.chat.presenters.ChatPresenter;
 import ru.alexbykov.chat.utils.Injector;
@@ -18,6 +20,10 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
 
     @InjectPresenter
     ChatPresenter chatPresenter;
+
+    private TextView tvToolbarTitle;
+    private TextView tvStatus;
+    private CustomCircleImageView civPhoto;
 
 
     @ProvidePresenter
@@ -33,7 +39,7 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
 
     @Override
     public void setupUI() {
-
+        bindViews();
     }
 
     @Override
@@ -43,16 +49,23 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
 
     @Override
     public void setToolbarTitle(String title) {
-        setTitle(title);
+        tvToolbarTitle.setText(title);
     }
 
     @Override
     public void setToolbarPhoto(String photoUrl) {
-
+        civPhoto.load(photoUrl);
     }
 
     @Override
-    public void setOnline(boolean online) {
+    public void setStatus(String status) {
+        tvStatus.setText(status);
+    }
 
+
+    public void bindViews() {
+        tvToolbarTitle = bindView(R.id.tvToolbarTitle);
+        tvStatus = bindView(R.id.tvStatus);
+        civPhoto = bindView(R.id.civPhoto);
     }
 }

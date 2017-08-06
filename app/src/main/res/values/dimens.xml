@@ -14,5 +14,7 @@
     <dimen name="chat_room_height">68dp</dimen>
     <dimen name="small_image">20dp</dimen>
     <dimen name="normal_image">60dp</dimen>
+    <dimen name="middle_image">40dp</dimen>
     <dimen name="standart_text_size">16sp</dimen>
+    <dimen name="large_text_size">18sp</dimen>
 </resources>

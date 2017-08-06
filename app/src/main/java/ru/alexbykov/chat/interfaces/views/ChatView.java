@@ -8,6 +8,8 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 public interface ChatView extends BaseView {
 
     void setToolbarTitle(String title);
+
     void setToolbarPhoto(String photoUrl);
-    void setOnline(boolean online);
+
+    void setStatus(String status);
 }

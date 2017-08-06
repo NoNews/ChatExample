@@ -26,6 +26,7 @@ public abstract class BaseSingleActivity extends BaseActivity {
     private void setupToolbar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("");
     }
 
     private void bindViews() {
