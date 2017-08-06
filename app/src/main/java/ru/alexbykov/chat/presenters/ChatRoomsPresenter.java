@@ -23,7 +23,7 @@ public class ChatRoomsPresenter extends BasePresenter<ChatRoomsView> implements 
     @Inject
     ChatRoomsPresenter(RestApi restApi, RoomsHelper roomsHelper, ChatManager chatRepository) {
         this.restApi = restApi;
-        this.chatRepository = chatRepository;
+        this.chatManager = chatRepository;
         this.roomsHelper = roomsHelper;
         getChatRoomsRequest();
     }
@@ -66,7 +66,7 @@ public class ChatRoomsPresenter extends BasePresenter<ChatRoomsView> implements 
 
     @Override
     public void onClick(ChatRoomDTO room) {
-        chatRepository.setChatRoom(room);
+        chatManager.setChatRoom(room);
         getViewState().startActivity(ChatActivity.class);
     }
 }

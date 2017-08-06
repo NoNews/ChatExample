@@ -50,6 +50,6 @@ public class RoomsHelper implements UpdateListener {
     }
 
     public void unsubscribe() {
-        rxUpdater.unsubscribe();
+        rxUpdater.disposeRoom();
     }
 }

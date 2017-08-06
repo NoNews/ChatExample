@@ -36,17 +36,16 @@
 
                 <TextView
                     android:id="@+id/tvToolbarTitle"
-                    style="@style/WhiteLargeBoldText"
+                    style="@style/WhiteStandartBoldText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="вавававававав"/>
+                />
 
                 <TextView
                     android:id="@+id/tvStatus"
-                    style="@style/WhiteStandartText"
+                    style="@style/WhiteSmallText"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="вававававав"/>
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
         </LinearLayout>

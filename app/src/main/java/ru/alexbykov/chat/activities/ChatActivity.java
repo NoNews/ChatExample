@@ -59,7 +59,7 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
 
     @Override
     public void setStatus(String status) {
-        tvStatus.setText(status);
+        runOnUiThread(() -> tvStatus.setText(status));
     }
 
 

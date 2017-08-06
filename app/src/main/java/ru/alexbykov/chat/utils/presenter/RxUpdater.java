@@ -24,7 +24,7 @@ public class RxUpdater {
     private static final int ROOM_UPDATE_INTERVAL = 3;
 
     private Disposable chatUpdate;
-    private Disposable roomDelay;
+    private Disposable chatDelay;
     private Disposable roomUpdate;
     private int count;
     private UpdateListener updateListener;
@@ -38,6 +38,8 @@ public class RxUpdater {
     public void startChatUpdate() {
         disposeDelay();
         chatUpdate = RxUtils.getPollingObservable(CHAT_UPDATE_TIME, this::startChatDelay)
+                .compose(RxUtils.httpSchedulers())
+                .doOnSubscribe(v -> updateListener.onUpdate(Const.Update.CHAT))
                 .doOnNext(v -> onUpdate(Const.Update.CHAT))
                 .subscribe();
     }
@@ -46,14 +48,19 @@ public class RxUpdater {
     @SuppressWarnings("unchecked")
     public void startRoomUpdate() {
         roomUpdate = RxUtils.getPollingObservable(ROOM_UPDATE_INTERVAL)
+                .compose(RxUtils.httpSchedulers())
                 .doOnNext(v -> updateListener.onUpdate(Const.Update.ROOM))
                 .subscribe();
     }
 
 
+    @SuppressWarnings("unchecked")
     private void startChatDelay() {
         disposeChatUpdate();
-        roomDelay = RxUtils.delay(CHAT_UPDATE_DELAY, this::startRoomUpdate).subscribe();
+        chatDelay = RxUtils.delay(CHAT_UPDATE_DELAY, this::startChatUpdate)
+                .compose(RxUtils.httpSchedulers())
+                .doOnSubscribe(v -> updateListener.onUpdate(Const.Update.DELAY))
+                .subscribe();
     }
 
     private void disposeChatUpdate() {
@@ -62,8 +69,8 @@ public class RxUpdater {
     }
 
     private void disposeDelay() {
-        if (roomDelay != null) {
-            roomDelay.dispose();
+        if (chatDelay != null) {
+            chatDelay.dispose();
         }
     }
 
@@ -72,7 +79,12 @@ public class RxUpdater {
         Log.i(TAG, "onUpdate: messageeeeeeeeeee" + ++count);
     }
 
-    public void unsubscribe() {
+    public void disposeRoom() {
         roomUpdate.dispose();
+    }
+
+    public void disposeChat() {
+        if (chatUpdate != null) chatUpdate.dispose();
+        if (chatDelay != null) chatDelay.dispose();
     }
 }

@@ -14,6 +14,6 @@ public class Const {
 
 
     public enum Update {
-        ROOM, CHAT
+        ROOM, CHAT, DELAY
     }
 }

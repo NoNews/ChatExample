@@ -10,8 +10,11 @@ import ru.alexbykov.chat.api.models.chats.MessageDTO;
  * @author Alex Bykov
  *         You can contact me at me@alexbykov.ru
  */
-public interface OnMessageChangedListener {
+public interface OnChatChangedListener {
     void onNewMessage(MessageDTO message);
-    void onMessagwWasDeleted(int messageId);
+    void onMessageWasDeleted(int messageId);
     void onMessageWasRead(int messageId);
+    void onPersonOffline(String lastTime);
+    void onPersonOnline();
+
 }

@@ -4,24 +4,59 @@ import com.arellomobile.mvp.InjectViewState;
 
 import javax.inject.Inject;
 
+import ru.alexbykov.chat.R;
+import ru.alexbykov.chat.api.models.chats.MessageDTO;
 import ru.alexbykov.chat.cache.ChatManager;
+import ru.alexbykov.chat.interfaces.callbacks.helpers.OnChatChangedListener;
 import ru.alexbykov.chat.interfaces.views.ChatView;
+import ru.alexbykov.chat.utils.presenter.Resources;
+import ru.alexbykov.chat.utils.presenter.chat.ChatHelper;
 
 
 @InjectViewState
-public class ChatPresenter extends BasePresenter<ChatView> {
+public class ChatPresenter extends BasePresenter<ChatView> implements OnChatChangedListener {
 
 
     @Inject
-    public ChatPresenter(ChatManager chatRepository) {
-        this.chatRepository = chatRepository;
+    public ChatPresenter(ChatManager chatRepository, ChatHelper chatHelper, Resources resources) {
+        this.chatManager = chatRepository;
+        this.chatHelper = chatHelper;
+        this.resources = resources;
+        waitForChatUpdate();
         setupToolbar();
     }
 
-    private void setupToolbar() {
-        getViewState().setToolbarTitle(chatRepository.getPerson().getFullName());
-        getViewState().setToolbarPhoto(chatRepository.getPerson().getPhotoUrl());
-        getViewState().setStatus("Онлайн");
+    private void waitForChatUpdate() {
+        chatHelper.setOnMessageChangedListener(this);
     }
 
+    private void setupToolbar() {
+        getViewState().setToolbarTitle(chatManager.getPerson().getFullName());
+        getViewState().setToolbarPhoto(chatManager.getPerson().getPhotoUrl());
+    }
+
+    @Override
+    public void onNewMessage(MessageDTO message) {
+
+    }
+
+    @Override
+    public void onMessageWasDeleted(int messageId) {
+
+    }
+
+    @Override
+    public void onMessageWasRead(int messageId) {
+
+    }
+
+    @Override
+    public void onPersonOffline(String lastTime) {
+        getViewState().setStatus(resources.getString(R.string.status_offline) + " " + lastTime);
+    }
+
+    @Override
+    public void onPersonOnline() {
+        getViewState().setStatus(resources.getString(R.string.status_online));
+    }
 }

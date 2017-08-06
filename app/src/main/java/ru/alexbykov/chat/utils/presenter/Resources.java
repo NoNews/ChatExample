@@ -28,6 +28,12 @@ public class Resources {
     }
 
     @NonNull
+    public final String getString(@StringRes int resId, String... masks) {
+        return app.getString(resId);
+    }
+
+
+    @NonNull
     public final String[] getStringArray(@ArrayRes int resId) {
         return app.getResources().getStringArray(resId);
     }

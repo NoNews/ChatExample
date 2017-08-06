@@ -9,7 +9,7 @@ import dagger.Provides;
 import ru.alexbykov.chat.App;
 import ru.alexbykov.chat.api.RestApi;
 import ru.alexbykov.chat.cache.ChatManager;
-import ru.alexbykov.chat.utils.presenter.chat.MessagesHelper;
+import ru.alexbykov.chat.utils.presenter.chat.ChatHelper;
 import ru.alexbykov.chat.utils.presenter.chat.RoomsHelper;
 import ru.alexbykov.chat.utils.presenter.TokenHelper;
 
@@ -28,19 +28,18 @@ public class RestModule {
     private TokenHelper tokenHelper;
     private RestApi restApi;
     private RoomsHelper roomsHelper;
-    private MessagesHelper messagesHelper;
+    private ChatHelper messagesHelper;
     private ChatManager chatManager;
 
     public RestModule(App app) {
         tokenHelper = new TokenHelper(PreferenceManager.getDefaultSharedPreferences(app));
         restApi = new RestApi(tokenHelper);
         roomsHelper = new RoomsHelper();
-        messagesHelper = new MessagesHelper();
+        messagesHelper = new ChatHelper();
         chatManager = new ChatManager(PreferenceManager.getDefaultSharedPreferences(app));
     }
 
 
-    @Singleton
     @Provides
     ChatManager provideChatManager() {
         return chatManager;
@@ -49,7 +48,7 @@ public class RestModule {
 
     @Singleton
     @Provides
-    MessagesHelper provideMessagesHelper() {
+    ChatHelper provideMessagesHelper() {
         return messagesHelper;
     }
 

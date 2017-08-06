@@ -11,7 +11,9 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import ru.alexbykov.chat.api.RestApi;
 import ru.alexbykov.chat.cache.ChatManager;
+import ru.alexbykov.chat.utils.presenter.Resources;
 import ru.alexbykov.chat.utils.presenter.TokenHelper;
+import ru.alexbykov.chat.utils.presenter.chat.ChatHelper;
 import ru.alexbykov.chat.utils.presenter.chat.RoomsHelper;
 
 
@@ -25,7 +27,9 @@ public class BasePresenter<View extends MvpView> extends MvpPresenter<View> {
     protected RestApi restApi;
     protected TokenHelper tokenHelper;
     protected RoomsHelper roomsHelper;
-    protected ChatManager chatRepository;
+    protected ChatManager chatManager;
+    protected ChatHelper chatHelper;
+    protected Resources resources;
     //
     protected final String TAG = getClass().getSimpleName();
 
@@ -54,6 +58,9 @@ public class BasePresenter<View extends MvpView> extends MvpPresenter<View> {
         compositeDisposable.clear();
         if (roomsHelper!=null){
             roomsHelper.unsubscribe();
+        }
+        if(chatHelper!=null){
+            chatHelper.unsubscribe();
         }
     }
 }

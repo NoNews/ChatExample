@@ -16,5 +16,6 @@
     <dimen name="normal_image">60dp</dimen>
     <dimen name="middle_image">40dp</dimen>
     <dimen name="standart_text_size">16sp</dimen>
+    <dimen name="small_text_size">13sp</dimen>
     <dimen name="large_text_size">18sp</dimen>
 </resources>
