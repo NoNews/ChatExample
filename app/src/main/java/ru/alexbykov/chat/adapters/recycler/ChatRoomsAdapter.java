@@ -36,7 +36,7 @@ public class ChatRoomsAdapter extends BaseRecyclerViewAdapter<ChatRoomDTO, ChatR
 
         holder.itemView.setOnClickListener(v -> {
             if (onItemClickListener != null) {
-                onItemClickListener.onClick(room.getId());
+                onItemClickListener.onClick(room);
             }
         });
 

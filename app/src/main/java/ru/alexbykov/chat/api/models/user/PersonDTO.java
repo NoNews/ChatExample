@@ -14,23 +14,15 @@ package ru.alexbykov.chat.api.models.user;
  */
 public class PersonDTO {
 
-    private String name;
-    private String lastName;
+    private String fullName;
     private String photoUrl;
-    public String getName() {
-        return name;
+
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getPhotoUrl() {

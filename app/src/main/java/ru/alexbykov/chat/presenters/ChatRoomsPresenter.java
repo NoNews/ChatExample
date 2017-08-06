@@ -12,16 +12,18 @@ import ru.alexbykov.chat.adapters.recycler.BaseRecyclerViewAdapter;
 import ru.alexbykov.chat.api.ApiResponse;
 import ru.alexbykov.chat.api.RestApi;
 import ru.alexbykov.chat.api.models.chats.ChatRoomDTO;
+import ru.alexbykov.chat.cache.ChatManager;
 import ru.alexbykov.chat.interfaces.views.ChatRoomsView;
 import ru.alexbykov.chat.utils.RxUtils;
 import ru.alexbykov.chat.utils.presenter.chat.RoomsHelper;
 
 @InjectViewState
-public class ChatRoomsPresenter extends BasePresenter<ChatRoomsView> implements BaseRecyclerViewAdapter.OnItemClickListener<Integer> {
+public class ChatRoomsPresenter extends BasePresenter<ChatRoomsView> implements BaseRecyclerViewAdapter.OnItemClickListener<ChatRoomDTO> {
 
     @Inject
-    ChatRoomsPresenter(RestApi restApi, RoomsHelper roomsHelper) {
+    ChatRoomsPresenter(RestApi restApi, RoomsHelper roomsHelper, ChatManager chatRepository) {
         this.restApi = restApi;
+        this.chatRepository = chatRepository;
         this.roomsHelper = roomsHelper;
         getChatRoomsRequest();
     }
@@ -63,7 +65,8 @@ public class ChatRoomsPresenter extends BasePresenter<ChatRoomsView> implements 
     }
 
     @Override
-    public void onClick(Integer person) {
+    public void onClick(ChatRoomDTO room) {
+        chatRepository.setChatRoom(room);
         getViewState().startActivity(ChatActivity.class);
     }
 }

@@ -4,15 +4,15 @@ import android.support.annotation.NonNull;
 
 import com.arellomobile.mvp.MvpPresenter;
 import com.arellomobile.mvp.MvpView;
-import com.arellomobile.mvp.Pair;
 
 import org.greenrobot.eventbus.EventBus;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import ru.alexbykov.chat.api.RestApi;
-import ru.alexbykov.chat.utils.presenter.chat.RoomsHelper;
+import ru.alexbykov.chat.cache.ChatManager;
 import ru.alexbykov.chat.utils.presenter.TokenHelper;
+import ru.alexbykov.chat.utils.presenter.chat.RoomsHelper;
 
 
 /**
@@ -25,6 +25,7 @@ public class BasePresenter<View extends MvpView> extends MvpPresenter<View> {
     protected RestApi restApi;
     protected TokenHelper tokenHelper;
     protected RoomsHelper roomsHelper;
+    protected ChatManager chatRepository;
     //
     protected final String TAG = getClass().getSimpleName();
 

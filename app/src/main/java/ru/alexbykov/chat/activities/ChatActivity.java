@@ -40,4 +40,19 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
     public void setupUX() {
 
     }
+
+    @Override
+    public void setToolbarTitle(String title) {
+        setTitle(title);
+    }
+
+    @Override
+    public void setToolbarPhoto(String photoUrl) {
+
+    }
+
+    @Override
+    public void setOnline(boolean online) {
+
+    }
 }
