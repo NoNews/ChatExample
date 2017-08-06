@@ -5,14 +5,14 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 import java.util.List;
 
-import ru.alexbykov.chat.api.models.chats.RoomDTO;
+import ru.alexbykov.chat.api.models.chats.ChatRoomDTO;
 import ru.alexbykov.chat.interfaces.utils_view.NetworkView;
 
 public interface ChatRoomsView extends BaseView, NetworkView {
 
     @StateStrategyType(OneExecutionStateStrategy.class)
-    void addChatRooms(List<RoomDTO> rooms);
+    void addChatRooms(List<ChatRoomDTO> rooms);
 
-    void updateChatRoom(RoomDTO room);
+    void updateChatRoom(ChatRoomDTO room);
 
 }

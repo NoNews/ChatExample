@@ -12,7 +12,7 @@ import java.util.List;
 
 import ru.alexbykov.chat.R;
 import ru.alexbykov.chat.adapters.recycler.ChatRoomsAdapter;
-import ru.alexbykov.chat.api.models.chats.RoomDTO;
+import ru.alexbykov.chat.api.models.chats.ChatRoomDTO;
 import ru.alexbykov.chat.interfaces.views.ChatRoomsView;
 import ru.alexbykov.chat.presenters.ChatRoomsPresenter;
 import ru.alexbykov.chat.utils.Injector;
@@ -52,12 +52,12 @@ public class ChatRoomsActivity extends BaseNetworkActivity implements ChatRoomsV
     }
 
     @Override
-    public void addChatRooms(List<RoomDTO> rooms) {
+    public void addChatRooms(List<ChatRoomDTO> rooms) {
         chatRoomsAdapter.addItems(rooms);
     }
 
     @Override
-    public void updateChatRoom(RoomDTO room) {
+    public void updateChatRoom(ChatRoomDTO room) {
         chatRoomsAdapter.updateItem(room);
     }
 

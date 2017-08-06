@@ -13,7 +13,7 @@ import ru.alexbykov.chat.utils.StringUtils;
  *         You can contact me at me@alexbykov.ru
  *         Данная модель — комата чата. Передаётся в списке чатов
  */
-public class RoomDTO {
+public class ChatRoomDTO {
 
     private int id;
     private String name;
@@ -27,7 +27,7 @@ public class RoomDTO {
     private String photoUrl;
     private boolean isRead;
 
-    public RoomDTO(int id, String name, int unreadMessagesCount, String lastMessageDate, String lastMessageText) {
+    public ChatRoomDTO(int id, String name, int unreadMessagesCount, String lastMessageDate, String lastMessageText) {
         this.id = id;
         this.name = name;
         this.unreadMessagesCount = unreadMessagesCount;
@@ -97,7 +97,7 @@ public class RoomDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RoomDTO roomDTO = (RoomDTO) o;
+        ChatRoomDTO roomDTO = (ChatRoomDTO) o;
 
         if (id != roomDTO.id) return false;
         if (unreadMessagesCount != roomDTO.unreadMessagesCount) return false;
@@ -117,7 +117,7 @@ public class RoomDTO {
         return result;
     }
 
-    public void update(RoomDTO updateRoom) {
+    public void update(ChatRoomDTO updateRoom) {
         setLastMessageDate(updateRoom.getLastMessageDate());
         setLastMessageText(updateRoom.getLastMessageText());
         setUnreadMessagesCount(updateRoom.getUnreadMessagesCount());

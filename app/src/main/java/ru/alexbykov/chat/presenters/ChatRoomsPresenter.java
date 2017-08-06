@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import io.reactivex.disposables.Disposable;
 import ru.alexbykov.chat.api.ApiResponse;
 import ru.alexbykov.chat.api.RestApi;
-import ru.alexbykov.chat.api.models.chats.RoomDTO;
+import ru.alexbykov.chat.api.models.chats.ChatRoomDTO;
 import ru.alexbykov.chat.interfaces.views.ChatRoomsView;
 import ru.alexbykov.chat.utils.presenter.chat.RoomsHelper;
 import ru.alexbykov.chat.utils.RxUtils;
@@ -43,8 +43,8 @@ public class ChatRoomsPresenter extends BasePresenter<ChatRoomsView> {
         getViewState().showNetworkError(true);
     }
 
-    private void successChatRoom(ApiResponse<List<RoomDTO>> response) {
-        List<RoomDTO> rooms = response.getData();
+    private void successChatRoom(ApiResponse<List<ChatRoomDTO>> response) {
+        List<ChatRoomDTO> rooms = response.getData();
         roomsHelper.addChatRooms(rooms);
         getViewState().addChatRooms(rooms);
         waitForRoomUpdate();

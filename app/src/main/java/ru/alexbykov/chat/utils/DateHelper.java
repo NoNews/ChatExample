@@ -14,7 +14,7 @@ import java.util.Calendar;
 public class DateHelper {
 
 
-    private static final String CHAT_TIME_PATTERN = "HH:MM:ss";
+    private static final String CHAT_TIME_PATTERN = "HH:mm:ss";
 
     private DateHelper() {
     }
@@ -28,6 +28,6 @@ public class DateHelper {
 
     private static String getDateFromPattern(Calendar calendar, String pattern) {
         SimpleDateFormat df = new SimpleDateFormat(pattern);
-        return StringUtils.removeZero(df.format(calendar.getTime()));
+        return df.format(calendar.getTime());
     }
 }

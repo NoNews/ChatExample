@@ -6,12 +6,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import ru.alexbykov.chat.R;
-import ru.alexbykov.chat.api.models.chats.RoomDTO;
+import ru.alexbykov.chat.api.models.chats.ChatRoomDTO;
 import ru.alexbykov.chat.custom.views.BadgeView;
 import ru.alexbykov.chat.custom.views.CustomCircleImageView;
 
 
-public class ChatRoomsAdapter extends BaseRecyclerViewAdapter<RoomDTO, ChatRoomsAdapter.ChatRoomViewHolder> {
+public class ChatRoomsAdapter extends BaseRecyclerViewAdapter<ChatRoomDTO, ChatRoomsAdapter.ChatRoomViewHolder> {
 
     private static final int LAYOUT = R.layout.item_chat_room;
 
@@ -27,7 +27,7 @@ public class ChatRoomsAdapter extends BaseRecyclerViewAdapter<RoomDTO, ChatRooms
 
     @Override
     public void onBindViewHolder(ChatRoomViewHolder holder, int position) {
-        RoomDTO room = items.get(position);
+        ChatRoomDTO room = items.get(position);
         holder.tvName.setText(room.getName());
         holder.civPhoto.load(room.getPhotoUrl());
         holder.tvLastMessage.setText(room.getLastMessageText());
@@ -43,13 +43,13 @@ public class ChatRoomsAdapter extends BaseRecyclerViewAdapter<RoomDTO, ChatRooms
         holder.ivRead.setSelected(room.isRead());
     }
 
-    public void updateItem(RoomDTO room) {
+    public void updateItem(ChatRoomDTO room) {
         findRoomAndChange(room);
         notifyDataSetChanged();
     }
 
-    private void findRoomAndChange(RoomDTO updateRoom) {
-        for (RoomDTO currentRoom : items) {
+    private void findRoomAndChange(ChatRoomDTO updateRoom) {
+        for (ChatRoomDTO currentRoom : items) {
             if (currentRoom.getId() == updateRoom.getId()) {
                 items.remove(currentRoom);
                 items.add(0, updateRoom);

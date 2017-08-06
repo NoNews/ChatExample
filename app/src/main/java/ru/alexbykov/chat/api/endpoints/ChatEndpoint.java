@@ -5,7 +5,7 @@ import java.util.List;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import ru.alexbykov.chat.api.ApiResponse;
-import ru.alexbykov.chat.api.models.chats.RoomDTO;
+import ru.alexbykov.chat.api.models.chats.ChatRoomDTO;
 
 /**
  * Created by Alex Bykov on 09.11.2016.
@@ -18,6 +18,6 @@ public interface ChatEndpoint {
     //              8832p
 //    https://api.myjson.com/bins/6qb49
     @GET("6qb49")
-    Observable<ApiResponse<List<RoomDTO>>> getRooms();
+    Observable<ApiResponse<List<ChatRoomDTO>>> getRooms();
 
 }

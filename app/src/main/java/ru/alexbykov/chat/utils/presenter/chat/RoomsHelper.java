@@ -3,7 +3,7 @@ package ru.alexbykov.chat.utils.presenter.chat;
 import java.util.List;
 
 import ru.alexbykov.chat.Const;
-import ru.alexbykov.chat.api.models.chats.RoomDTO;
+import ru.alexbykov.chat.api.models.chats.ChatRoomDTO;
 import ru.alexbykov.chat.interfaces.callbacks.helpers.OnRoomChangedListener;
 import ru.alexbykov.chat.interfaces.callbacks.updater.UpdateListener;
 import ru.alexbykov.chat.utils.Generator;
@@ -21,7 +21,7 @@ public class RoomsHelper implements UpdateListener {
 
     private OnRoomChangedListener onRoomChangedListener;
     private RxUpdater rxUpdater;
-    private List<RoomDTO> rooms;
+    private List<ChatRoomDTO> rooms;
 
     public RoomsHelper() {
         rxUpdater = new RxUpdater(this);
@@ -32,7 +32,7 @@ public class RoomsHelper implements UpdateListener {
         this.onRoomChangedListener = onRoomChangedListener;
     }
 
-    private void updateRoom(RoomDTO room) {
+    private void updateRoom(ChatRoomDTO room) {
         if (onRoomChangedListener != null) {
             onRoomChangedListener.onRoomChange(room);
         }
@@ -45,7 +45,7 @@ public class RoomsHelper implements UpdateListener {
         }
     }
 
-    public void addChatRooms(List<RoomDTO> rooms) {
+    public void addChatRooms(List<ChatRoomDTO> rooms) {
         this.rooms = rooms;
     }
 

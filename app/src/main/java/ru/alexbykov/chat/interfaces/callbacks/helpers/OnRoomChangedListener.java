@@ -1,6 +1,6 @@
 package ru.alexbykov.chat.interfaces.callbacks.helpers;
 
-import ru.alexbykov.chat.api.models.chats.RoomDTO;
+import ru.alexbykov.chat.api.models.chats.ChatRoomDTO;
 
 /**
  * Date: 04.08.2017
@@ -11,5 +11,5 @@ import ru.alexbykov.chat.api.models.chats.RoomDTO;
  *         You can contact me at me@alexbykov.ru
  */
 public interface OnRoomChangedListener {
-    void onRoomChange(RoomDTO room);
+    void onRoomChange(ChatRoomDTO room);
 }
