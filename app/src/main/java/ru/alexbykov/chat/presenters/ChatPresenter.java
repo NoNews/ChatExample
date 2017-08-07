@@ -59,4 +59,9 @@ public class ChatPresenter extends BasePresenter<ChatView> implements OnChatChan
     public void onPersonOnline() {
         getViewState().setStatus(resources.getString(R.string.status_online));
     }
+
+    @Override
+    public void onIsTyping(boolean isTyping) {
+        getViewState().setTyping(isTyping);
+    }
 }

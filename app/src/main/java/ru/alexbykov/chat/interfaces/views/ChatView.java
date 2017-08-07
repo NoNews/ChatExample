@@ -12,4 +12,5 @@ public interface ChatView extends BaseView {
     void setToolbarPhoto(String photoUrl);
 
     void setStatus(String status);
+    void setTyping(boolean isTyping);
 }

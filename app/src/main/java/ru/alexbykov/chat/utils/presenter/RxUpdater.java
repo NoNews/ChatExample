@@ -39,8 +39,8 @@ public class RxUpdater {
         disposeDelay();
         chatUpdate = RxUtils.getPollingObservable(CHAT_UPDATE_TIME, this::startChatDelay)
                 .compose(RxUtils.httpSchedulers())
-                .doOnSubscribe(v -> updateListener.onUpdate(Const.Update.CHAT))
-                .doOnNext(v -> onUpdate(Const.Update.CHAT))
+                .doOnSubscribe(v -> updateListener.onUpdate(Const.Update.CHAT_START))
+                .doOnNext(v -> onUpdate(Const.Update.CHAT_UPDATE))
                 .subscribe();
     }
 
@@ -49,7 +49,7 @@ public class RxUpdater {
     public void startRoomUpdate() {
         roomUpdate = RxUtils.getPollingObservable(ROOM_UPDATE_INTERVAL)
                 .compose(RxUtils.httpSchedulers())
-                .doOnNext(v -> updateListener.onUpdate(Const.Update.ROOM))
+                .doOnNext(v -> updateListener.onUpdate(Const.Update.ROOM_UPDATE))
                 .subscribe();
     }
 
@@ -59,7 +59,7 @@ public class RxUpdater {
         disposeChatUpdate();
         chatDelay = RxUtils.delay(CHAT_UPDATE_DELAY, this::startChatUpdate)
                 .compose(RxUtils.httpSchedulers())
-                .doOnSubscribe(v -> updateListener.onUpdate(Const.Update.DELAY))
+                .doOnSubscribe(v -> updateListener.onUpdate(Const.Update.DELAY_START))
                 .subscribe();
     }
 

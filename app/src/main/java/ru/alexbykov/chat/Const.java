@@ -14,6 +14,10 @@ public class Const {
 
 
     public enum Update {
-        ROOM, CHAT, DELAY
+        ROOM_UPDATE, CHAT_START, CHAT_UPDATE, DELAY_START
+    }
+
+    public enum ChatAction {
+        NEW_MESSAGE, TYPING_START, TYPING_END, DELETE_MESSAGE
     }
 }

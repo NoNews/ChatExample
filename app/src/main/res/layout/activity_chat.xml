@@ -46,6 +46,14 @@
                     style="@style/WhiteSmallText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:visibility="gone"
+                    android:text="@string/chat_typing"
+                    android:id="@+id/tvTyping"
+                    style="@style/WhiteSmallText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
         </LinearLayout>

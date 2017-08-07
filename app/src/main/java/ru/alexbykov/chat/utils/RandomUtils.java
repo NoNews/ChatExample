@@ -1,5 +1,6 @@
 package ru.alexbykov.chat.utils;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -12,6 +13,7 @@ import java.util.Random;
  */
 public class RandomUtils {
 
+    private static final SecureRandom random = new SecureRandom();
     private static String[] messages = new String[]{
             "Зачем собака летает",
             "Зачем собака прогнозирует",
@@ -1595,5 +1597,11 @@ public class RandomUtils {
     public static boolean getRandomBoolean() {
         Random random = new Random();
         return random.nextBoolean();
+    }
+
+
+    public static <T extends Enum<?>> T randomEnum(Class<T> clazz){
+        int x = random.nextInt(clazz.getEnumConstants().length);
+        return clazz.getEnumConstants()[x];
     }
 }

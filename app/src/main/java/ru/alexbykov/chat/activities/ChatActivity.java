@@ -23,6 +23,7 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
 
     private TextView tvToolbarTitle;
     private TextView tvStatus;
+    private TextView tvTyping;
     private CustomCircleImageView civPhoto;
 
 
@@ -62,10 +63,22 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
         runOnUiThread(() -> tvStatus.setText(status));
     }
 
+    @Override
+    public void setTyping(boolean isTyping) {
+        if (isTyping) {
+            showView(tvTyping);
+            hideView(tvStatus);
+        } else {
+            hideView(tvTyping);
+            showView(tvStatus);
+        }
+    }
+
 
     public void bindViews() {
         tvToolbarTitle = bindView(R.id.tvToolbarTitle);
         tvStatus = bindView(R.id.tvStatus);
         civPhoto = bindView(R.id.civPhoto);
+        tvTyping = bindView(R.id.tvTyping);
     }
 }

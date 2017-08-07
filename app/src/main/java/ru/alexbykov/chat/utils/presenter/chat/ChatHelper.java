@@ -1,10 +1,10 @@
 package ru.alexbykov.chat.utils.presenter.chat;
 
 import ru.alexbykov.chat.Const;
-import ru.alexbykov.chat.api.models.chats.MessageDTO;
 import ru.alexbykov.chat.interfaces.callbacks.helpers.OnChatChangedListener;
 import ru.alexbykov.chat.interfaces.callbacks.updater.UpdateListener;
 import ru.alexbykov.chat.utils.DateHelper;
+import ru.alexbykov.chat.utils.RandomUtils;
 import ru.alexbykov.chat.utils.presenter.RxUpdater;
 
 /**
@@ -27,41 +27,34 @@ public class ChatHelper implements UpdateListener {
         rxUpdater.startChatUpdate();
     }
 
-
-    public void deleteMessage(int messageId) {
-        if (isValidListener()) {
-            onMessageChangedListener.onMessageWasDeleted(messageId);
-        }
-    }
-
-
-    public void readMessage(int messageId) {
-        if (isValidListener()) {
-            onMessageChangedListener.onMessageWasRead(messageId);
-        }
-    }
-
-    public void newMessage(MessageDTO message) {
-        if (isValidListener()) {
-            onMessageChangedListener.onNewMessage(message);
-        }
-    }
-
-    private boolean isValidListener() {
-        return onMessageChangedListener != null;
-    }
-
     @Override
     public void onUpdate(Const.Update update) {
         switch (update) {
-            case DELAY:
+            case DELAY_START:
                 onMessageChangedListener.onPersonOffline(DateHelper.getCurrentTime());
                 break;
-            case CHAT:
+            case CHAT_START:
                 onMessageChangedListener.onPersonOnline();
+                break;
+            case CHAT_UPDATE:
+                updateChat();
                 break;
         }
 
+    }
+
+    private void updateChat() {
+        switch (RandomUtils.randomEnum(Const.ChatAction.class)) {
+            case NEW_MESSAGE:
+                break;
+            case TYPING_START:
+                onMessageChangedListener.onIsTyping(true);
+                break;
+            case TYPING_END:
+                onMessageChangedListener.onIsTyping(false);
+                break;
+
+        }
     }
 
     public void unsubscribe() {

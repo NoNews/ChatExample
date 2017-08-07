@@ -40,7 +40,7 @@ public class RoomsHelper implements UpdateListener {
 
     @Override
     public void onUpdate(Const.Update update) {
-        if (update == Const.Update.ROOM) {
+        if (update == Const.Update.ROOM_UPDATE) {
             updateRoom(Generator.getRandomRoom(rooms));
         }
     }
