@@ -20,7 +20,7 @@ public abstract class BaseChatAdapter extends BaseRecyclerViewAdapter<MessageDTO
 
 
     private static final int LAYOUT_INBOX = R.layout.item_chat_inbox;
-    private static final int LAYOUT_OUTBOX = R.layout.item_chat;
+    private static final int LAYOUT_OUTBOX = R.layout.item_chat_outbox;
 
     @Override
     public int getItemViewType(int position) {

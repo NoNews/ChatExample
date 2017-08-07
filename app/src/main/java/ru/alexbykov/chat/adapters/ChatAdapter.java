@@ -27,8 +27,15 @@ public class ChatAdapter extends BaseChatAdapter {
             setupInboxMessage(chatHolder, message);
 
         } else {
-
+            ChatOutboxHolder outboxHolder = (ChatOutboxHolder) holder;
+            setupOutboxMessage(outboxHolder, message);
         }
+    }
+
+    private void setupOutboxMessage(ChatOutboxHolder outboxHolder, MessageDTO message) {
+        outboxHolder.tvMessage.setText(message.getMessageText());
+        outboxHolder.tvDate.setText(message.getDate());
+        outboxHolder.civPhoto.load(message.getPerson().getPhotoUrl());
     }
 
     private void setupInboxMessage(ChatInboxHolder chatHolder, MessageDTO message) {
@@ -59,8 +66,15 @@ public class ChatAdapter extends BaseChatAdapter {
 
     public static class ChatOutboxHolder extends BaseViewHolder {
 
+        private TextView tvDate;
+        private TextView tvMessage;
+        private CustomCircleImageView civPhoto;
+
         public ChatOutboxHolder(View itemView) {
             super(itemView);
+            tvDate = bindView(R.id.tvDate);
+            tvMessage = bindView(R.id.tvMessage);
+            civPhoto = bindView(R.id.civPhoto);
         }
     }
 }

@@ -29,7 +29,7 @@ public class Generator {
         MessageDTO message = new MessageDTO();
         message.setMessageText(RandomUtils.getRandomLastMessage());
         message.setDate(DateHelper.getCurrentTime());
-        message.setType(Const.MessageType.INBOX);
+        message.setType(RandomUtils.getRandom(Const.MessageType.INBOX, Const.MessageType.OUTBOX));
         return message;
     }
 }

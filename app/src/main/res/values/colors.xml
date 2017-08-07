@@ -8,7 +8,8 @@
     <color name="light_background">#FAFAFA</color>
     <color name="error_color">#F44336</color>
     <color name="gray1">#EEEEEE</color>
-    <color name="gray2">#E0E0E0</color>
+    <color name="grey2">#E0E0E0</color>
+    <color name="grey3">#757575</color>
     <color name="white">#fff</color>
 
 </resources>
