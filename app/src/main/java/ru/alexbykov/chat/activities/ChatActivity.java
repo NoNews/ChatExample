@@ -2,6 +2,8 @@ package ru.alexbykov.chat.activities;
 
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,6 +12,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 
 import ru.alexbykov.chat.R;
 import ru.alexbykov.chat.activities.base.BaseSingleActivity;
+import ru.alexbykov.chat.adapters.ChatAdapter;
 import ru.alexbykov.chat.api.models.chats.MessageDTO;
 import ru.alexbykov.chat.custom.views.CustomCircleImageView;
 import ru.alexbykov.chat.interfaces.views.ChatView;
@@ -30,6 +33,8 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
     private AppCompatEditText etInput;
     private CustomCircleImageView civPhoto;
     private ImageView ivSend;
+    private ChatAdapter chatAdapter;
+    private RecyclerView rvChat;
 
 
     @ProvidePresenter
@@ -46,6 +51,9 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
     @Override
     public void setupUI() {
         bindViews();
+        chatAdapter = new ChatAdapter();
+        rvChat.setLayoutManager(new LinearLayoutManager(this));
+        rvChat.setAdapter(chatAdapter);
     }
 
     @Override
@@ -81,12 +89,12 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
 
     @Override
     public void addInboxMessage(MessageDTO message) {
-
+        chatAdapter.addInboxMessage(message);
     }
 
     @Override
     public void addOutboxMessage(MessageDTO message) {
-
+        chatAdapter.addOutboxMessage(message);
     }
 
     @Override
@@ -102,5 +110,6 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
         tvTyping = bindView(R.id.tvTyping);
         etInput = bindView(R.id.etInput);
         ivSend = bindView(R.id.ivSend);
+        rvChat = bindView(R.id.rvChat);
     }
 }

@@ -13,7 +13,7 @@ import ru.alexbykov.chat.api.models.chats.MessageDTO;
 import ru.alexbykov.chat.api.models.chats.OutboxMessage;
 
 
-public class ChatAdapter extends BaseRecyclerViewAdapter<MessageDTO, ChatAdapter.ViewHolder> {
+public class ChatAdapter extends BaseRecyclerViewAdapter<MessageDTO, BaseViewHolder> {
 
     private static final int LAYOUT = R.layout.item_chat;
 
@@ -23,13 +23,13 @@ public class ChatAdapter extends BaseRecyclerViewAdapter<MessageDTO, ChatAdapter
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public ChatInboxHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = inflate(viewGroup, LAYOUT);
-        return new ViewHolder(view);
+        return new ChatInboxHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(BaseViewHolder holder, int position) {
 
     }
 
@@ -45,9 +45,16 @@ public class ChatAdapter extends BaseRecyclerViewAdapter<MessageDTO, ChatAdapter
     }
 
 
-    public static class ViewHolder extends BaseViewHolder {
+    public static class ChatInboxHolder extends BaseViewHolder {
 
-        public ViewHolder(View itemView) {
+        public ChatInboxHolder(View itemView) {
+            super(itemView);
+        }
+    }
+
+    public static class ChatOutboxHolder extends BaseViewHolder {
+
+        public ChatOutboxHolder(View itemView) {
             super(itemView);
         }
     }
