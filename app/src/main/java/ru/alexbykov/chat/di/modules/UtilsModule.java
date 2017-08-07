@@ -1,9 +1,12 @@
 package ru.alexbykov.chat.di.modules;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import ru.alexbykov.chat.App;
 import ru.alexbykov.chat.utils.presenter.Resources;
+import ru.alexbykov.novalid.Validator;
 
 /**
  * Date: 04.06.2017
@@ -18,9 +21,18 @@ import ru.alexbykov.chat.utils.presenter.Resources;
 public class UtilsModule {
 
     private App app;
+    private Validator validator;
 
     public UtilsModule(App app) {
         this.app = app;
+        validator = new Validator(app);
+    }
+
+
+    @Singleton
+    @Provides
+    Validator provideValidator() {
+        return validator;
     }
 
     @Provides

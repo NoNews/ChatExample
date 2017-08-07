@@ -15,6 +15,7 @@ import ru.alexbykov.chat.utils.presenter.Resources;
 import ru.alexbykov.chat.utils.presenter.TokenHelper;
 import ru.alexbykov.chat.utils.presenter.chat.ChatHelper;
 import ru.alexbykov.chat.utils.presenter.chat.RoomsHelper;
+import ru.alexbykov.novalid.Validator;
 
 
 /**
@@ -30,6 +31,7 @@ public class BasePresenter<View extends MvpView> extends MvpPresenter<View> {
     protected ChatManager chatManager;
     protected ChatHelper chatHelper;
     protected Resources resources;
+    protected Validator validator;
     //
     protected final String TAG = getClass().getSimpleName();
 

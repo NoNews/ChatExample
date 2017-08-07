@@ -14,6 +14,7 @@ import ru.alexbykov.chat.utils.DateHelper;
 import ru.alexbykov.chat.utils.PersonUtils;
 import ru.alexbykov.chat.utils.presenter.Resources;
 import ru.alexbykov.chat.utils.presenter.chat.ChatHelper;
+import ru.alexbykov.novalid.Validator;
 
 
 @InjectViewState
@@ -21,9 +22,13 @@ public class ChatPresenter extends BasePresenter<ChatView> implements OnChatChan
 
 
     @Inject
-    public ChatPresenter(ChatManager chatRepository, ChatHelper chatHelper, Resources resources) {
+    public ChatPresenter(ChatManager chatRepository,
+                         ChatHelper chatHelper,
+                         Resources resources,
+                         Validator validator) {
         this.chatManager = chatRepository;
         this.chatHelper = chatHelper;
+        this.validator = validator;
         this.resources = resources;
         waitForChatUpdate();
         setupToolbar();
@@ -62,10 +67,12 @@ public class ChatPresenter extends BasePresenter<ChatView> implements OnChatChan
 
     public void onClickSend(String text) {
         getViewState().clearInput();
-        MessageDTO message = new MessageDTO();
-        message.setMessageText(text);
-        message.setDate(DateHelper.getCurrentTime());
-        message.setType(Const.MessageType.OUTBOX);
-        onNewMessage(message);
+        if (validator.isValidField(text)){
+            MessageDTO message = new MessageDTO();
+            message.setMessageText(text);
+            message.setDate(DateHelper.getCurrentTime());
+            message.setType(Const.MessageType.OUTBOX);
+            onNewMessage(message);
+        }
     }
 }
