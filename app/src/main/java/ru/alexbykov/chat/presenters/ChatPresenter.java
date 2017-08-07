@@ -4,11 +4,14 @@ import com.arellomobile.mvp.InjectViewState;
 
 import javax.inject.Inject;
 
+import ru.alexbykov.chat.Const;
 import ru.alexbykov.chat.R;
 import ru.alexbykov.chat.api.models.chats.MessageDTO;
 import ru.alexbykov.chat.cache.ChatManager;
 import ru.alexbykov.chat.interfaces.callbacks.helpers.OnChatChangedListener;
 import ru.alexbykov.chat.interfaces.views.ChatView;
+import ru.alexbykov.chat.utils.DateHelper;
+import ru.alexbykov.chat.utils.PersonUtils;
 import ru.alexbykov.chat.utils.presenter.Resources;
 import ru.alexbykov.chat.utils.presenter.chat.ChatHelper;
 
@@ -37,7 +40,7 @@ public class ChatPresenter extends BasePresenter<ChatView> implements OnChatChan
 
     @Override
     public void onNewMessage(MessageDTO message) {
-        message.setPerson(chatManager.getPerson());
+        message.setPerson(message.getType() == Const.MessageType.INBOX ? chatManager.getPerson() : PersonUtils.getMe());
         getViewState().addMessage(message);
     }
 
@@ -59,5 +62,10 @@ public class ChatPresenter extends BasePresenter<ChatView> implements OnChatChan
 
     public void onClickSend(String text) {
         getViewState().clearInput();
+        MessageDTO message = new MessageDTO();
+        message.setMessageText(text);
+        message.setDate(DateHelper.getCurrentTime());
+        message.setType(Const.MessageType.OUTBOX);
+        onNewMessage(message);
     }
 }
