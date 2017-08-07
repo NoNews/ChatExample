@@ -1587,7 +1587,7 @@ public class RandomUtils {
 
 
     public static int getRandomMessagesCount() {
-        return getRandom(0, 20);
+        return getRandom(0, 150);
     }
 
     public static String getRandomLastMessage() {
