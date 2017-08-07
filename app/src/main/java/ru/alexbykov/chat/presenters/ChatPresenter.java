@@ -38,7 +38,7 @@ public class ChatPresenter extends BasePresenter<ChatView> implements OnChatChan
     @Override
     public void onNewMessage(MessageDTO message) {
         message.setPerson(chatManager.getPerson());
-        getViewState().addInboxMessage(message);
+        getViewState().addMessage(message);
     }
 
     @Override

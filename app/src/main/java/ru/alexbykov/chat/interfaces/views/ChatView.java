@@ -14,8 +14,7 @@ public interface ChatView extends BaseView {
     void setToolbarPhoto(String photoUrl);
     void setStatus(String status);
     void setTyping(boolean isTyping);
-    void addInboxMessage(MessageDTO message);
-    void addOutboxMessage(MessageDTO message);
+    void addMessage(MessageDTO message);
     @StateStrategyType(SkipStrategy.class)
     void clearInput();
 }

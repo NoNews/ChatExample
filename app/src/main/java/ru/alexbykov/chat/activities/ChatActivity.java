@@ -35,6 +35,7 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
     private ImageView ivSend;
     private ChatAdapter chatAdapter;
     private RecyclerView rvChat;
+    private LinearLayoutManager chatManager;
 
 
     @ProvidePresenter
@@ -51,9 +52,15 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
     @Override
     public void setupUI() {
         bindViews();
+        setupChatRecyclerView();
+    }
+
+    private void setupChatRecyclerView() {
         chatAdapter = new ChatAdapter();
-        rvChat.setLayoutManager(new LinearLayoutManager(this));
+        chatManager = new LinearLayoutManager(this);
+        rvChat.setLayoutManager(chatManager);
         rvChat.setAdapter(chatAdapter);
+
     }
 
     @Override
@@ -87,14 +94,11 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
         }
     }
 
-    @Override
-    public void addInboxMessage(MessageDTO message) {
-        chatAdapter.addInboxMessage(message);
-    }
 
     @Override
-    public void addOutboxMessage(MessageDTO message) {
-        chatAdapter.addOutboxMessage(message);
+    public void addMessage(MessageDTO message) {
+        chatAdapter.addMessage(message);
+        rvChat.getLayoutManager().scrollToPosition(chatManager.findLastVisibleItemPosition() + 1);
     }
 
     @Override

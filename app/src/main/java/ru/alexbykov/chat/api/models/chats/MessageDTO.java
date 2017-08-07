@@ -15,6 +15,7 @@ public class MessageDTO {
     private String messageText;
     private String date;
     private PersonDTO person;
+    private int type;
 
 
     public String getMessageText() {
@@ -39,5 +40,13 @@ public class MessageDTO {
 
     public void setPerson(PersonDTO person) {
         this.person = person;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

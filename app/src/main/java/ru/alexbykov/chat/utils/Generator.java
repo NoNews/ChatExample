@@ -2,6 +2,7 @@ package ru.alexbykov.chat.utils;
 
 import java.util.List;
 
+import ru.alexbykov.chat.Const;
 import ru.alexbykov.chat.api.models.chats.ChatRoomDTO;
 import ru.alexbykov.chat.api.models.chats.MessageDTO;
 
@@ -28,6 +29,7 @@ public class Generator {
         MessageDTO message = new MessageDTO();
         message.setMessageText(RandomUtils.getRandomLastMessage());
         message.setDate(DateHelper.getCurrentTime());
+        message.setType(Const.MessageType.INBOX);
         return message;
     }
 }

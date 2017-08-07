@@ -3,9 +3,9 @@ package ru.alexbykov.chat.adapters.recycler;
 import android.view.View;
 import android.view.ViewGroup;
 
+import ru.alexbykov.chat.Const;
 import ru.alexbykov.chat.R;
 import ru.alexbykov.chat.adapters.ChatAdapter;
-import ru.alexbykov.chat.api.models.chats.InboxMessage;
 import ru.alexbykov.chat.api.models.chats.MessageDTO;
 
 /**
@@ -19,23 +19,19 @@ import ru.alexbykov.chat.api.models.chats.MessageDTO;
 public abstract class BaseChatAdapter extends BaseRecyclerViewAdapter<MessageDTO, BaseViewHolder> {
 
 
-    private static final int INBOX_MESSAGE = 1;
-    private static final int OUTBOX_MESSAGE = 2;
-
-    private static final int LAYOUT_INBOX = R.layout.item_chat;
+    private static final int LAYOUT_INBOX = R.layout.item_chat_inbox;
     private static final int LAYOUT_OUTBOX = R.layout.item_chat;
 
     @Override
     public int getItemViewType(int position) {
-        MessageDTO message = items.get(position);
-        return message instanceof InboxMessage ? INBOX_MESSAGE : OUTBOX_MESSAGE;
+        return items.get(position).getType();
     }
 
 
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
-        if (viewType == LAYOUT_INBOX) {
+        if (viewType == Const.MessageType.INBOX) {
             view = inflate(parent, LAYOUT_INBOX);
             return new ChatAdapter.ChatInboxHolder(view);
         } else {

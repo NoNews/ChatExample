@@ -1,54 +1,59 @@
 package ru.alexbykov.chat.adapters;
 
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import ru.alexbykov.chat.Const;
 import ru.alexbykov.chat.R;
-import ru.alexbykov.chat.adapters.recycler.BaseRecyclerViewAdapter;
+import ru.alexbykov.chat.adapters.recycler.BaseChatAdapter;
 import ru.alexbykov.chat.adapters.recycler.BaseViewHolder;
-import ru.alexbykov.chat.api.models.chats.InboxMessage;
 import ru.alexbykov.chat.api.models.chats.MessageDTO;
-import ru.alexbykov.chat.api.models.chats.OutboxMessage;
+import ru.alexbykov.chat.custom.views.CustomCircleImageView;
 
 
-public class ChatAdapter extends BaseRecyclerViewAdapter<MessageDTO, BaseViewHolder> {
-
-    private static final int LAYOUT = R.layout.item_chat;
-
+public class ChatAdapter extends BaseChatAdapter {
 
     public ChatAdapter() {
         items = new ArrayList<>();
     }
 
     @Override
-    public ChatInboxHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View view = inflate(viewGroup, LAYOUT);
-        return new ChatInboxHolder(view);
-    }
-
-    @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
+        MessageDTO message = items.get(position);
+        if (getItemViewType(position) == Const.MessageType.INBOX) {
+            ChatInboxHolder chatHolder = (ChatInboxHolder) holder;
+            setupInboxMessage(chatHolder, message);
 
+        } else {
+
+        }
+    }
+
+    private void setupInboxMessage(ChatInboxHolder chatHolder, MessageDTO message) {
+        chatHolder.tvMessage.setText(message.getMessageText());
+        chatHolder.tvDate.setText(message.getDate());
+        chatHolder.civPhoto.load(message.getPerson().getPhotoUrl());
     }
 
 
-    public void addInboxMessage(MessageDTO message) {
-        InboxMessage inboxMessage = (InboxMessage) message;
-        add(inboxMessage, items.size());
-    }
-
-    public void addOutboxMessage(MessageDTO message) {
-        OutboxMessage outboxMessage = (OutboxMessage) message;
-        add(outboxMessage, items.size());
+    public void addMessage(MessageDTO message) {
+        add(message, items.size());
     }
 
 
     public static class ChatInboxHolder extends BaseViewHolder {
 
+        private TextView tvDate;
+        private TextView tvMessage;
+        private CustomCircleImageView civPhoto;
+
         public ChatInboxHolder(View itemView) {
             super(itemView);
+            tvDate = bindView(R.id.tvDate);
+            tvMessage = bindView(R.id.tvMessage);
+            civPhoto = bindView(R.id.civPhoto);
         }
     }
 
