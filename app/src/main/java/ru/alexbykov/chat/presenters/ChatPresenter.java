@@ -55,4 +55,9 @@ public class ChatPresenter extends BasePresenter<ChatView> implements OnChatChan
     public void onIsTyping(boolean isTyping) {
         getViewState().setTyping(isTyping);
     }
+
+
+    public void onClickSend(String text) {
+        getViewState().clearInput();
+    }
 }

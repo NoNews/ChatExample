@@ -2,6 +2,7 @@ package ru.alexbykov.chat.interfaces.views;
 
 
 import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy;
+import com.arellomobile.mvp.viewstate.strategy.SkipStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 import ru.alexbykov.chat.api.models.chats.MessageDTO;
@@ -15,4 +16,6 @@ public interface ChatView extends BaseView {
     void setTyping(boolean isTyping);
     void addInboxMessage(MessageDTO message);
     void addOutboxMessage(MessageDTO message);
+    @StateStrategyType(SkipStrategy.class)
+    void clearInput();
 }

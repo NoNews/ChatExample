@@ -78,48 +78,32 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:clipToPadding="false"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
+            android:paddingBottom="@dimen/activity_middle_margin"
+            android:paddingTop="@dimen/activity_middle_margin"
             android.support.v7.recyclerview:stackFromEnd="true"/>
 
         <include layout="@layout/item_separate_line"/>
 
         <RelativeLayout
-            android:id="@+id/rlInput"
+            android:id="@+id/ltInput"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/input_size"
         >
 
             <ImageView
                 android:id="@+id/ivSend"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerInParent="true"
-                android:layout_marginEnd="@dimen/activity_middle_margin"
-                android:background="?attr/selectableItemBackground"
-                android:padding="@dimen/activity_middle_margin"
-                android:src="@drawable/ic_send"
-                android:tint="@color/colorPrimary"
+                style="@style/SendStyle"
+                android:layout_width="@dimen/standart_image_button"
+                android:layout_height="@dimen/standart_image_button"
             />
 
             <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/etInputMsg"
+                android:id="@+id/etInput"
+                style="@style/MessageTextInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="@dimen/activity_small_margin"
                 android:layout_toStartOf="@id/ivSend"
-                android:background="@null"
-                android:hint="@string/insert_message"
-                android:inputType="textMultiLine"
-                android:lines="8"
-                android:maxLines="10"
-                android:minLines="6"
-                android:padding="@dimen/activity_very_small_margin"
-                android:scrollbars="vertical"
-                android:textColor="@android:color/black"
-                android:textSize="14sp"/>
+            />
 
 
         </RelativeLayout>

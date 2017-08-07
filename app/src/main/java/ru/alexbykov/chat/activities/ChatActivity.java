@@ -1,6 +1,8 @@
 package ru.alexbykov.chat.activities;
 
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatEditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -25,7 +27,9 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
     private TextView tvToolbarTitle;
     private TextView tvStatus;
     private TextView tvTyping;
+    private AppCompatEditText etInput;
     private CustomCircleImageView civPhoto;
+    private ImageView ivSend;
 
 
     @ProvidePresenter
@@ -46,7 +50,7 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
 
     @Override
     public void setupUX() {
-
+        ivSend.setOnClickListener(v -> chatPresenter.onClickSend(etInput.getText().toString()));
     }
 
     @Override
@@ -85,11 +89,18 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
 
     }
 
+    @Override
+    public void clearInput() {
+        etInput.getText().clear();
+    }
+
 
     public void bindViews() {
         tvToolbarTitle = bindView(R.id.tvToolbarTitle);
         tvStatus = bindView(R.id.tvStatus);
         civPhoto = bindView(R.id.civPhoto);
         tvTyping = bindView(R.id.tvTyping);
+        etInput = bindView(R.id.etInput);
+        ivSend = bindView(R.id.ivSend);
     }
 }
