@@ -12,8 +12,6 @@ import ru.alexbykov.chat.api.models.chats.MessageDTO;
  */
 public interface OnChatChangedListener {
     void onNewMessage(MessageDTO message);
-    void onMessageWasDeleted(int messageId);
-    void onMessageWasRead(int messageId);
     void onPersonOffline(String lastTime);
     void onPersonOnline();
     void onIsTyping(boolean isTyping);

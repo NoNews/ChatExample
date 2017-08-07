@@ -8,6 +8,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 
 import ru.alexbykov.chat.R;
 import ru.alexbykov.chat.activities.base.BaseSingleActivity;
+import ru.alexbykov.chat.api.models.chats.MessageDTO;
 import ru.alexbykov.chat.custom.views.CustomCircleImageView;
 import ru.alexbykov.chat.interfaces.views.ChatView;
 import ru.alexbykov.chat.presenters.ChatPresenter;
@@ -72,6 +73,16 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
             hideView(tvTyping);
             showView(tvStatus);
         }
+    }
+
+    @Override
+    public void addInboxMessage(MessageDTO message) {
+
+    }
+
+    @Override
+    public void addOutboxMessage(MessageDTO message) {
+
     }
 
 

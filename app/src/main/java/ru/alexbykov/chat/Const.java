@@ -18,6 +18,6 @@ public class Const {
     }
 
     public enum ChatAction {
-        NEW_MESSAGE, TYPING_START, TYPING_END, DELETE_MESSAGE
+        NEW_MESSAGE, TYPING_START, TYPING_END
     }
 }

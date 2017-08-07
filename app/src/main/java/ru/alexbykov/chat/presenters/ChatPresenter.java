@@ -37,17 +37,8 @@ public class ChatPresenter extends BasePresenter<ChatView> implements OnChatChan
 
     @Override
     public void onNewMessage(MessageDTO message) {
-
-    }
-
-    @Override
-    public void onMessageWasDeleted(int messageId) {
-
-    }
-
-    @Override
-    public void onMessageWasRead(int messageId) {
-
+        message.setPerson(chatManager.getPerson());
+        getViewState().addInboxMessage(message);
     }
 
     @Override

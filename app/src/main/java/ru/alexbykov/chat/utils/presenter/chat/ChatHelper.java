@@ -4,6 +4,7 @@ import ru.alexbykov.chat.Const;
 import ru.alexbykov.chat.interfaces.callbacks.helpers.OnChatChangedListener;
 import ru.alexbykov.chat.interfaces.callbacks.updater.UpdateListener;
 import ru.alexbykov.chat.utils.DateHelper;
+import ru.alexbykov.chat.utils.Generator;
 import ru.alexbykov.chat.utils.RandomUtils;
 import ru.alexbykov.chat.utils.presenter.RxUpdater;
 
@@ -46,6 +47,7 @@ public class ChatHelper implements UpdateListener {
     private void updateChat() {
         switch (RandomUtils.randomEnum(Const.ChatAction.class)) {
             case NEW_MESSAGE:
+                onMessageChangedListener.onNewMessage(Generator.getNewMessage());
                 break;
             case TYPING_START:
                 onMessageChangedListener.onIsTyping(true);

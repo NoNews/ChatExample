@@ -7,4 +7,5 @@
     <string name="status_online">Онлайн</string>
     <string name="status_offline">"Был в сети в "</string>
     <string name="chat_typing">печатает...</string>
+    <string name="insert_message">Введите сообщение</string>
 </resources>

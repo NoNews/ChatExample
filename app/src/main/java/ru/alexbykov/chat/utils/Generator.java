@@ -3,6 +3,7 @@ package ru.alexbykov.chat.utils;
 import java.util.List;
 
 import ru.alexbykov.chat.api.models.chats.ChatRoomDTO;
+import ru.alexbykov.chat.api.models.chats.MessageDTO;
 
 /**
  * Date: 05.08.2017
@@ -21,5 +22,12 @@ public class Generator {
         room.setUnreadMessagesCount(RandomUtils.getRandomMessagesCount());
         room.setRead(RandomUtils.getRandomBoolean());
         return room;
+    }
+
+    public static MessageDTO getNewMessage() {
+        MessageDTO message = new MessageDTO();
+        message.setMessageText(RandomUtils.getRandomLastMessage());
+        message.setDate(DateHelper.getCurrentTime());
+        return message;
     }
 }

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android.support.v7.recyclerview="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -48,19 +51,80 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:visibility="gone"
-                    android:text="@string/chat_typing"
                     android:id="@+id/tvTyping"
                     style="@style/WhiteSmallText"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:text="@string/chat_typing"
+                    android:visibility="gone"/>
             </LinearLayout>
 
         </LinearLayout>
 
-
     </android.support.v7.widget.Toolbar>
 
+
+    <LinearLayout
+        android:id="@+id/ltRoot"
+        style="@style/BoilerPlate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/chatRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android.support.v7.recyclerview:stackFromEnd="true"/>
+
+        <include layout="@layout/item_separate_line"/>
+
+        <RelativeLayout
+            android:id="@+id/rlInput"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+        >
+
+            <ImageView
+                android:id="@+id/ivSend"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="@dimen/activity_middle_margin"
+                android:background="?attr/selectableItemBackground"
+                android:padding="@dimen/activity_middle_margin"
+                android:src="@drawable/ic_send"
+                android:tint="@color/colorPrimary"
+            />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/etInputMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/activity_small_margin"
+                android:layout_toStartOf="@id/ivSend"
+                android:background="@null"
+                android:hint="@string/insert_message"
+                android:inputType="textMultiLine"
+                android:lines="8"
+                android:maxLines="10"
+                android:minLines="6"
+                android:padding="@dimen/activity_very_small_margin"
+                android:scrollbars="vertical"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"/>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
 
