@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -13,19 +12,18 @@
         android:layout_width="@dimen/extra_photo_size"
         android:layout_height="@dimen/extra_photo_size"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:scaleType="centerCrop"
-    />
+        android:scaleType="centerCrop" />
 
-    <!--<ImageView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:src="@drawable/chat_ugol_gray"/>-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_middle_margin"
+        android:src="@drawable/chat_ugol_gray" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/ultra_big_margin"
-        android:layout_marginStart="@dimen/activity_small_margin"
         android:background="@color/grey3">
 
         <TextView
@@ -33,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/activity_horizontal_margin"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/tvDate"
@@ -42,8 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvMessage"
             android:paddingBottom="@dimen/activity_vertical_margin"
-            android:paddingStart="@dimen/activity_vertical_margin"
-        />
+            android:paddingStart="@dimen/activity_vertical_margin" />
     </RelativeLayout>
 
 </LinearLayout>
