@@ -94,4 +94,8 @@ abstract public class BaseRecyclerViewAdapter<T, VH extends RecyclerView.ViewHol
         }
     }
 
+    protected boolean isValidItems() {
+        return items != null && !items.isEmpty();
+    }
+
 }

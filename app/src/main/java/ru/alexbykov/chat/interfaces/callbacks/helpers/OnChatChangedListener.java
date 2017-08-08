@@ -15,5 +15,5 @@ public interface OnChatChangedListener {
     void onPersonOffline(String lastTime);
     void onPersonOnline();
     void onIsTyping(boolean isTyping);
-
+    void onMessageDelete();
 }

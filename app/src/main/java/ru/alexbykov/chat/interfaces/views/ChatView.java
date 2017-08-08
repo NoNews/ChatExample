@@ -15,6 +15,7 @@ public interface ChatView extends BaseView {
     void setStatus(String status);
     void setTyping(boolean isTyping);
     void addMessage(MessageDTO message);
+    void deleteMessage();
     @StateStrategyType(SkipStrategy.class)
     void clearInput();
 }

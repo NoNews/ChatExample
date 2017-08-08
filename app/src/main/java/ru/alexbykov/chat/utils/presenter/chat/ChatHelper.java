@@ -46,7 +46,7 @@ public class ChatHelper implements UpdateListener {
 
     private void updateChat() {
         switch (RandomUtils.randomEnum(Const.ChatAction.class)) {
-            case NEW_MESSAGE:
+            case MESSAGE_NEW:
                 onMessageChangedListener.onNewMessage(Generator.getNewMessage());
                 break;
             case TYPING_START:
@@ -54,6 +54,9 @@ public class ChatHelper implements UpdateListener {
                 break;
             case TYPING_END:
                 onMessageChangedListener.onIsTyping(false);
+                break;
+            case MESSAGE_DELETE:
+                onMessageChangedListener.onMessageDelete();
                 break;
 
         }

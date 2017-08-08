@@ -5,12 +5,14 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import okhttp3.MultipartBody;
 import ru.alexbykov.chat.Const;
 import ru.alexbykov.chat.R;
 import ru.alexbykov.chat.adapters.recycler.BaseChatAdapter;
 import ru.alexbykov.chat.adapters.recycler.BaseViewHolder;
 import ru.alexbykov.chat.api.models.chats.MessageDTO;
 import ru.alexbykov.chat.custom.views.CustomCircleImageView;
+import ru.alexbykov.chat.utils.MessageUtils;
 
 
 public class ChatAdapter extends BaseChatAdapter {
@@ -48,6 +50,14 @@ public class ChatAdapter extends BaseChatAdapter {
     public void addMessage(MessageDTO message) {
         add(message, items.size());
     }
+
+
+    public void deleteMessage() {
+        if (isValidItems()) {
+            remove(items.size() - 1);
+        }
+    }
+
 
 
     public static class ChatInboxHolder extends BaseViewHolder {

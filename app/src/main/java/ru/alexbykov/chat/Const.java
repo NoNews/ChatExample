@@ -13,10 +13,21 @@ public class Const {
     }
 
     public static class MessageType {
-       public static final int INBOX = 1;
-       public static final int OUTBOX = 2;
+        private MessageType() {
+        }
+
+        public static final int INBOX = 1;
+        public static final int OUTBOX = 2;
     }
 
+
+    public static class MessageStatus {
+        private MessageStatus() {
+        }
+        public static final int READ = 1;
+        public static final int CHANGE = 2;
+        public static final int DELETE = 3;
+    }
 
 
     public enum Update {
@@ -24,6 +35,8 @@ public class Const {
     }
 
     public enum ChatAction {
-        NEW_MESSAGE, TYPING_START, TYPING_END
+        MESSAGE_NEW, TYPING_START, TYPING_END, MESSAGE_DELETE
     }
+
+
 }

@@ -85,13 +85,16 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
 
     @Override
     public void setTyping(boolean isTyping) {
-        if (isTyping) {
-            showView(tvTyping);
-            hideView(tvStatus);
-        } else {
-            hideView(tvTyping);
-            showView(tvStatus);
-        }
+        runOnUiThread(() -> {
+            if (isTyping) {
+                showView(tvTyping);
+                hideView(tvStatus);
+            } else {
+                hideView(tvTyping);
+                showView(tvStatus);
+            }
+        });
+
     }
 
 
@@ -99,6 +102,12 @@ public class ChatActivity extends BaseSingleActivity implements ChatView {
     public void addMessage(MessageDTO message) {
         chatAdapter.addMessage(message);
         rvChat.getLayoutManager().scrollToPosition(chatManager.findLastVisibleItemPosition() + 1);
+    }
+
+
+    @Override
+    public void deleteMessage() {
+        chatAdapter.deleteMessage();
     }
 
     @Override

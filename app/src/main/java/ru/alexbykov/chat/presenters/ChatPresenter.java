@@ -51,6 +51,7 @@ public class ChatPresenter extends BasePresenter<ChatView> implements OnChatChan
 
     @Override
     public void onPersonOffline(String lastTime) {
+        getViewState().setTyping(false);
         getViewState().setStatus(resources.getString(R.string.status_offline) + " " + lastTime);
     }
 
@@ -64,10 +65,16 @@ public class ChatPresenter extends BasePresenter<ChatView> implements OnChatChan
         getViewState().setTyping(isTyping);
     }
 
+    @Override
+    public void onMessageDelete() {
+        getViewState().deleteMessage();
+    }
+
+
 
     public void onClickSend(String text) {
         getViewState().clearInput();
-        if (validator.isValidField(text)){
+        if (validator.isValidField(text)) {
             MessageDTO message = new MessageDTO();
             message.setMessageText(text);
             message.setDate(DateHelper.getCurrentTime());

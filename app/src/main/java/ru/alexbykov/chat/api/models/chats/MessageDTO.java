@@ -15,6 +15,7 @@ public class MessageDTO {
     private String messageText;
     private String date;
     private PersonDTO person;
+    private int status;
     private int type;
 
 
