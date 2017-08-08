@@ -5,14 +5,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import okhttp3.MultipartBody;
 import ru.alexbykov.chat.Const;
 import ru.alexbykov.chat.R;
 import ru.alexbykov.chat.adapters.recycler.BaseChatAdapter;
 import ru.alexbykov.chat.adapters.recycler.BaseViewHolder;
 import ru.alexbykov.chat.api.models.chats.MessageDTO;
 import ru.alexbykov.chat.custom.views.CustomCircleImageView;
-import ru.alexbykov.chat.utils.MessageUtils;
 
 
 public class ChatAdapter extends BaseChatAdapter {

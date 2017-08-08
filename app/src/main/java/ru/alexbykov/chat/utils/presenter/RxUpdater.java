@@ -26,7 +26,6 @@ public class RxUpdater {
     private Disposable chatUpdate;
     private Disposable chatDelay;
     private Disposable roomUpdate;
-    private int count;
     private UpdateListener updateListener;
 
     public RxUpdater(UpdateListener updateListener) {
@@ -76,7 +75,6 @@ public class RxUpdater {
 
     private void onUpdate(Const.Update update) {
         updateListener.onUpdate(update);
-        Log.i(TAG, "onUpdate: messageeeeeeeeeee" + ++count);
     }
 
     public void disposeRoom() {

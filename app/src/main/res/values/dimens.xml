@@ -11,7 +11,7 @@
     <dimen name="badge_very_small_margin">2dp</dimen>
     <dimen name="badge_size">30dp</dimen>
     <dimen name="badge_normal_text_size">5sp</dimen>
-    <dimen name="chat_room_height">68dp</dimen>
+    <dimen name="chat_room_height">74dp</dimen>
     <dimen name="small_image">20dp</dimen>
     <dimen name="normal_image">60dp</dimen>
     <dimen name="middle_image">40dp</dimen>
